@@ -1,0 +1,13 @@
+langchain-experimental
+python-dotenv==1.0.0
+Flask==2.3.2
+Flask_Cors==3.0.10
+langchain==0.0.309
+faiss-cpu
+openai
+tiktoken
+waitress==2.1.2
+mysql-connector-python==8.1.0
+SQLAlchemy==2.0.19
+pandas
+numpy

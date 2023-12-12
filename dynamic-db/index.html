@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debales Database Loader</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400&family=Roboto&display=swap");
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+     --primary: #FFC40C;
+     --secondary: #002244;
+     --tertiary: #FE4A55;
+     --input: #d9d9d9;
+     --footer: #100F1F;
+}
+
+    body {
+      background: #fff;
+      line-height: 1.6;
+      margin: auto;
+      max-width: 1280px;
+      font-family: 'Merriweather', serif;
+      letter-spacing: 0.025em;
+      overflow: auto;
+    }
+
+    nav {
+      background: var(--secondary);
+      padding: 1.2rem;
+      color: #fff;
+      font-family: "Nunito Sans", sans-serif;
+      display: flex;
+      letter-spacing: 1.6px;
+      font-size: 1.5rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      letter-spacing: 2px;
+      margin: auto;
+    }
+
+    /* nav .nav-text {
+        font-size: 1.5rem;
+        font-weight: 600;
+      } */
+
+      .container {
+  margin: 2rem;
+  border-radius: 0.5rem;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
+  padding: 1rem;
+  border-radius: 14px;
+  border: none;
+  background: #fff;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.2); /* Adjust values as needed */
+}
+
+
+    .message-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* .message-container .message:nth-child(odd) {
+        background-color: #f5f5f5;
+      } */
+
+
+
+    .message-box-head {
+      background-color: var(--input);
+    }
+
+    .bot-message {
+      background-color: #f5f5f5;
+    }
+
+    .user-message {
+      background-color: #fff;
+    }
+
+    .message {
+      padding: 20px;
+      border-radius: 4px;
+    }
+
+    .head {
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 16px 10px 20px;
+    }
+
+    .message p {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-message-img {
+      padding: 0 8px;
+    }
+
+    .answer-message-img {
+      width: 48px;
+    }
+
+    .message-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .answer-message {
+      background-color: #f5f5f5;
+    }
+
+    .source-message {
+      background-color: #ddfcc3;
+    }
+
+    .database-input-container {
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      width: 80%;
+      border: 2px solid var(--secondary);
+      background: #fff;
+      flex-direction: column;
+      color: var(--tertiary);
+      margin: auto;
+      margin-top: 3rem;
+      border-radius: 1rem;
+      backdrop-filter: blur(5px);
+    }
+
+
+    .database-input-container label {
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #000;
+    }
+
+    .database-input-container input {
+      border: 1.2px solid var(--primary);
+      background: #fff;
+      border-radius: 4px;
+      padding: 10px;
+      font-size: 0.9rem;
+      width: 100%;
+      color: #000;
+      margin-bottom: 1.4rem;
+    }
+    .database-input-container input::placeholder {
+  color: rgb(158, 158, 158);
+  font-weight: 400;
+}
+
+    /* .input-container {
+      margin: 0 4rem;
+      display: flex;
+      margin-top: 20px;
+      border-radius: 0.4rem;
+      box-shadow: 0px 6px 6px #00000029;
+      position: relative;
+      background: rgba(24, 92, 94, 0.582);
+      padding: 0.8rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .input-container input[type="text"] {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 18px;
+    }
+
+    .input-container button {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      border: none;
+      color: #ffffff;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    } */
+
+    .Home_svgicon__PLaWz {
+      transform: rotate(90deg);
+      width: 1.2em;
+      height: 1.2em;
+      fill: currentColor;
+      cursor: pointer;
+      padding: 16px;
+    }
+
+    .Home_svgicon__PLaWz:hover {
+      background-color: #f5f5f5;
+    }
+
+    .button {
+      width: 150px;
+      height: 50px;
+      font-size: 1.3rem;
+      border-radius: 0.5rem;
+      color: var(--secondary);
+      border: 2px solid var(--primary);
+      background: transparent;
+      font-weight: 500;
+      margin: auto;
+    }
+
+    .button:hover{
+      cursor: pointer;
+      background: var(--primary);
+    }
+
+    .head {
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 1rem;
+      font-family: "Nunito Sans";
+      margin-top: 5rem;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 500;
+      padding: 2rem 1rem;
+      gap: 1rem;
+      background: var(--footer);
+      color: #ffffff;
+    }
+
+    .question{
+      padding: 1rem;
+      display: flex;
+      margin: auto;
+      width: 95%;
+      border-radius: 1rem;
+      border: 2px solid #797979;
+    }
+
+    .response-message {
+      position: absolute;
+      top: 10px;
+      left: 3rem;
+      font-size: 1.25rem;
+      background: #797979;
+    }
+
+    @media only screen and (max-width: 640px) {
+      nav {
+        margin: 0;
+      }
+
+      .head {
+        font-size: 1.1rem;
+      }
+
+      .container {
+        margin: 1rem;
+      }
+
+      .message {
+        padding: 10px;
+      }
+
+      .input-container {
+        margin: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h2 class="logo">DEBALES</h2>
+  </nav>
+  
+      <div class="database-input-container">
+        <label for="database-link">Database Link:</label>
+        <input class="placeholder" type="text" id="database-link" placeholder="Enter your link to database" required />
+    
+        <label for="database-username">Database Username:</label>
+        <input class="placeholder" type="text" id="database-username" placeholder="Enter your username to database" required/>
+    
+        <label for="database-password">Database Password:</label>
+        <input class="placeholder" type="password" id="database-password" placeholder="Enter your password to database" required/>
+    
+        <label for="database-name">Database name:</label>
+        <input class="placeholder" type="text" id="database-name" placeholder="Enter the name of the database" required/>
+    
+        <button class="button" id="submit-button" onclick="submitForm()">Submit</button>
+      </div>
+  
+
+
+  <div>
+    <div class="head">
+      <span style="color: var(--secondary); font-weight: 500; font-size: 2rem;">Chat With </span>
+      <span id="head-chat-title" style="color: var(--tertiary); font-weight: 600; font-size: 2rem;"></span>
+      <!-- <p style="color: #2f5814">Below Bot can answer the questions using the API Agents</p> -->
+      <!-- !-- span style="color: #ff001b">Enter your question below</span> -->
+    </div>
+    <div class="container">
+      <div style="width: 96%;" class="message-container" id="message-container">
+        <div class="message message-box-head">
+          <div class="message-head">
+            <img src='../static/images/bot2.png' width="50px" alt="" />
+            <div>
+              <span style="color: #000; font-weight: 400;">Ask me anything about</span>
+              <span id="box-chat-title" style="color:var(--secondary); font-weight: 700;"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="input-container"> -->
+      <div id="response-message" class="response-message"></div>
+      <input style="background: transparent; color: #000; border: 1.5px solid var(--primary); font-size: 1.1rem; border-radius: 0.6rem;" class="question" type="text" id="question-input" placeholder="Enter your question" />
+      <svg viewBox="0 0 20 20" class="Home_svgicon__PLaWz" onclick="submitQuestion()"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
+        </path>
+      </svg>
+    <!-- </div> -->
+  </div>
+
+  <div class="footer" style="margin-top: 2rem;">
+    Powered by <a href="https://debales.ai/" target="_blank" style="color: var(--primary); font-weight: 700; text-decoration: none;">debales.ai</a>
+  </div>
+
+  <script>
+    var questionInput = document.getElementById("question-input");
+
+    // Chat Title
+    var title = "Database Loader";
+    var chatTitleHead = document.getElementById("head-chat-title");
+    var chatTitleBox = document.getElementById("box-chat-title");
+    chatTitleHead.innerHTML = title;
+    chatTitleBox.innerHTML = title;
+
+    questionInput.addEventListener("keyup", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault(); // Prevent form submission
+        submitQuestion();
+      }
+    });
+
+    function submitQuestion() {
+      var question = questionInput.value.trim();
+
+      if (question === "") {
+        return;
+      }
+
+      // Waiting message show in input field
+      var responseMessage = document.getElementById("response-message");
+      responseMessage.innerText = "Waiting for responses...";
+      questionInput.disabled = true;
+
+      // Display the user's question immediately
+      displayMessage(question, "user-message");
+
+      // Waiting for responses
+      // setTimeout(() => {
+      //   //displayMessage("answer-message");
+      //   responseMessage.innerText = "";
+      //   questionInput.disabled = false;
+      // }, [2000]);
+
+      // Create a JSON object with the question
+      var data = {
+        query: question,
+      };
+
+      // Send a POST request to your Flask server
+      fetch("/query", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Display the user's question
+          //displayMessage(question, "user-message");
+
+          // Display the response from the server
+          displayMessage(data.response, "answer-message");
+          console.log("test1", data.response);
+          responseMessage.innerText = "";
+          questionInput.disabled = false;
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
+      questionInput.value = "";
+    }
+
+    function displayMessage(message, className) {
+      var messageContainer = document.getElementById("message-container");
+      var messageElement = document.createElement("div");
+      messageElement.classList.add("message", className);
+      messageElement.innerHTML =
+        className === "answer-message"
+          ? // Bot message
+          "<p class='bot-message'><img class='answer-message-img' src='../static/images/bot-image.png' alt='Answer' />" +
+          message +
+          "</p>"
+          : // User message
+          "<p class='user-message'><img class='user-message-img' src='../static/images/usericon.webp' alt='User' />" +
+          message +
+          "</p>";
+      messageContainer.appendChild(messageElement);
+    }
+
+    function submitForm() {
+      // Get values from input fields
+      var databaseLink = document.getElementById('database-link').value;
+      var databaseUsername = document.getElementById('database-username').value;
+      var databasePassword = document.getElementById('database-password').value;
+      var databaseName = document.getElementById('database-name').value;
+
+      // Create data object
+      var data = {
+        databaseLink: databaseLink,
+        databaseUsername: databaseUsername,
+        databasePassword: databasePassword,
+        databaseName: databaseName
+      };
+
+      // Send data to the /connect_db route using a POST request
+      fetch('/connect_db', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          alert(data.message);
+          if (data.success) {
+        document.getElementById('question-input').disabled = false;
+      } else {
+        document.getElementById('question-input').disabled = true;
+      }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  </script>
+</body>
+
+</html>
